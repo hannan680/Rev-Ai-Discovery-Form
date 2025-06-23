@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,7 +19,23 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'audiowide': ['Audiowide', 'sans-serif'],
+				'manrope': ['Manrope', 'sans-serif'],
+				'pacifico': ['Pacifico', 'cursive'],
+			},
 			colors: {
+				// RevSquared AI Brand Colors
+				'neon-aqua': '#00E5D6',
+				'hot-magenta': '#E536C1',
+				'cyber-yellow': '#FEDD4D',
+				'purple-grape': '#6233EA',
+				'deep-violet': '#20215A',
+				'soft-lavender': '#D3D4FF',
+				'charcoal-black': '#0D0D0D',
+				'bright-white': '#F5F5F5',
+				
+				// Shadcn colors
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -84,11 +101,29 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'neon-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(0, 229, 214, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px rgba(0, 229, 214, 0.8)'
+					}
+				},
+				'magenta-pulse': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(229, 54, 193, 0.5)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px rgba(229, 54, 193, 0.8)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+				'magenta-pulse': 'magenta-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
