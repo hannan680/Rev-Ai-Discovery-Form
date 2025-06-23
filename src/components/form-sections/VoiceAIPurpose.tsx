@@ -1,0 +1,120 @@
+
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { FormData } from '@/pages/Index';
+
+interface VoiceAIPurposeProps {
+  formData: FormData;
+  updateFormData: (updates: Partial<FormData>) => void;
+}
+
+const purposeOptions = [
+  { value: 'lead-qualification', label: 'Lead qualification and appointment setting' },
+  { value: 'customer-support', label: 'Customer support and troubleshooting' },
+  { value: 'sales-consultation', label: 'Sales consultation and product recommendations' },
+  { value: 'information-gathering', label: 'Information gathering and surveys' },
+  { value: 'other', label: 'Other' }
+];
+
+const personalityOptions = [
+  { value: 'professional', label: 'Professional & Corporate' },
+  { value: 'friendly', label: 'Friendly & Approachable' },
+  { value: 'warm', label: 'Warm & Caring' },
+  { value: 'technical', label: 'Technical & Expert' },
+  { value: 'casual', label: 'Casual & Conversational' },
+  { value: 'other', label: 'Other' }
+];
+
+const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
+  const handlePersonalityChange = (value: string, checked: boolean) => {
+    const updatedPersonality = checked
+      ? [...formData.brandPersonality, value]
+      : formData.brandPersonality.filter(p => p !== value);
+    updateFormData({ brandPersonality: updatedPersonality });
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Main Purpose */}
+      <div className="space-y-4">
+        <Label className="text-lg font-semibold text-gray-900">
+          What is the main purpose of your voice AI agent? *
+        </Label>
+        <RadioGroup
+          value={formData.mainPurpose}
+          onValueChange={(value) => updateFormData({ mainPurpose: value })}
+          className="space-y-3"
+        >
+          {purposeOptions.map((option) => (
+            <div key={option.value} className="flex items-center space-x-3">
+              <RadioGroupItem value={option.value} id={option.value} />
+              <Label htmlFor={option.value} className="text-sm text-gray-700">
+                {option.label}
+              </Label>
+            </div>
+          ))}
+        </RadioGroup>
+        
+        {formData.mainPurpose === 'other' && (
+          <div className="ml-6 mt-3">
+            <Input
+              value={formData.mainPurposeOther}
+              onChange={(e) => updateFormData({ mainPurposeOther: e.target.value })}
+              placeholder="Please specify the main purpose"
+              className="w-full max-w-md"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Brand Personality */}
+      <div className="space-y-4">
+        <Label className="text-lg font-semibold text-gray-900">
+          What brand personality should your AI agent have? (Select all that apply)
+        </Label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {personalityOptions.map((option) => (
+            <div key={option.value} className="flex items-center space-x-3">
+              <Checkbox
+                id={`personality-${option.value}`}
+                checked={formData.brandPersonality.includes(option.value)}
+                onCheckedChange={(checked) => 
+                  handlePersonalityChange(option.value, checked as boolean)
+                }
+              />
+              <Label 
+                htmlFor={`personality-${option.value}`} 
+                className="text-sm text-gray-700"
+              >
+                {option.label}
+              </Label>
+            </div>
+          ))}
+        </div>
+        
+        {formData.brandPersonality.includes('other') && (
+          <div className="mt-3">
+            <Input
+              value={formData.brandPersonalityOther}
+              onChange={(e) => updateFormData({ brandPersonalityOther: e.target.value })}
+              placeholder="Please describe your preferred personality"
+              className="w-full max-w-md"
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+        <h4 className="font-medium text-green-900 mb-2">Pro Tip</h4>
+        <p className="text-sm text-green-800">
+          The more specific you are about your AI's purpose and personality, the better we can 
+          customize its responses to match your brand and achieve your goals.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default VoiceAIPurpose;
