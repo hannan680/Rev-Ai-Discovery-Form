@@ -19,7 +19,7 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="companyName" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="companyName" className="text-lg font-audiowide text-bright-white">
             Company Name *
           </Label>
           <Input
@@ -27,13 +27,13 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             value={formData.companyName}
             onChange={(e) => updateFormData({ companyName: e.target.value })}
             placeholder="Enter your company name"
-            className="w-full"
+            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             required
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="industry" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="industry" className="text-lg font-audiowide text-bright-white">
             Industry
           </Label>
           <Input
@@ -42,7 +42,7 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             onChange={(e) => updateFormData({ industry: e.target.value })}
             placeholder="Select or type your industry"
             list="industry-options"
-            className="w-full"
+            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           />
           <datalist id="industry-options">
             {industryOptions.map(option => (
@@ -54,7 +54,7 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="contactName" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="contactName" className="text-lg font-audiowide text-bright-white">
             Contact Name *
           </Label>
           <Input
@@ -62,13 +62,13 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             value={formData.contactName}
             onChange={(e) => updateFormData({ contactName: e.target.value })}
             placeholder="Enter primary contact name"
-            className="w-full"
+            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             required
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="email" className="text-lg font-audiowide text-bright-white">
             Email Address *
           </Label>
           <Input
@@ -77,7 +77,7 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             value={formData.email}
             onChange={(e) => updateFormData({ email: e.target.value })}
             placeholder="Enter email address"
-            className="w-full"
+            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             required
           />
         </div>
@@ -85,7 +85,7 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="phone" className="text-sm font-medium text-gray-700">
+          <Label htmlFor="phone" className="text-lg font-audiowide text-bright-white">
             Phone Number
           </Label>
           <Input
@@ -94,14 +94,14 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             value={formData.phone}
             onChange={(e) => updateFormData({ phone: e.target.value })}
             placeholder="Enter phone number"
-            className="w-full"
+            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           />
         </div>
       </div>
 
-      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-        <h4 className="font-medium text-blue-900 mb-2">Why we collect this information</h4>
-        <p className="text-sm text-blue-800">
+      <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-neon-aqua neon-glow">
+        <h4 className="font-audiowide text-cyber-yellow mb-2">ℹ️ Why we collect this information</h4>
+        <p className="text-sm text-soft-lavender font-manrope">
           This basic information helps us understand your business context and ensures we can follow up 
           with the right person about your voice AI requirements.
         </p>

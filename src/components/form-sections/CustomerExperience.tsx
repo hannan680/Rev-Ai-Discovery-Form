@@ -39,7 +39,7 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
     <div className="space-y-8">
       {/* Emotional States */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What emotional states do your customers typically have when they call?
         </Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -54,7 +54,7 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
               />
               <Label 
                 htmlFor={`emotion-${option.value}`} 
-                className="text-sm text-gray-700"
+                className="text-sm text-soft-lavender font-manrope"
               >
                 {option.label}
               </Label>
@@ -68,7 +68,7 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
               value={formData.emotionalStatesOther}
               onChange={(e) => updateFormData({ emotionalStatesOther: e.target.value })}
               placeholder="Please describe other emotional states"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}
@@ -76,13 +76,13 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
 
       {/* Common Problems */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What are the 3 most common problems your customers call about?
         </Label>
         <div className="space-y-3">
           {[0, 1, 2].map((index) => (
             <div key={index} className="space-y-2">
-              <Label htmlFor={`problem-${index}`} className="text-sm font-medium text-gray-700">
+              <Label htmlFor={`problem-${index}`} className="text-sm font-audiowide text-neon-aqua">
                 Problem {index + 1}
               </Label>
               <Input
@@ -90,7 +90,7 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
                 value={formData.commonProblems[index] || ''}
                 onChange={(e) => handleProblemChange(index, e.target.value)}
                 placeholder={`Enter common problem ${index + 1}`}
-                className="w-full"
+                className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
               />
             </div>
           ))}
@@ -99,7 +99,7 @@ const CustomerExperience = ({ formData, updateFormData }: CustomerExperienceProp
 
       {/* Common Objections */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What are common objections or concerns, and how should they be addressed?
         </Label>
         <Textarea
@@ -111,14 +111,14 @@ Response: 'I understand you want to get an idea of costs. To give you the most a
 
 Objection: 'I want to think about it'
 Response: 'That makes perfect sense! What specific concerns can I help address to make this decision easier?'"
-          className="min-h-40"
+          className="min-h-40 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={8}
         />
       </div>
 
       {/* Customer Examples */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Upload Customer Examples (Optional)
         </Label>
         <FileUpload

@@ -30,49 +30,49 @@ const AgentKnowledge = ({ formData, updateFormData }: AgentKnowledgeProps) => {
     <div className="space-y-8">
       {/* Company Services */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Services Offered
         </Label>
         <Textarea
           value={formData.companyServices}
           onChange={(e) => updateFormData({ companyServices: e.target.value })}
           placeholder="List all services your company provides..."
-          className="min-h-24"
+          className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
         />
       </div>
 
       {/* Service Areas */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Service Areas
         </Label>
         <Textarea
           value={formData.serviceAreas}
           onChange={(e) => updateFormData({ serviceAreas: e.target.value })}
           placeholder="Geographic areas you serve (cities, counties, radius, etc.)..."
-          className="min-h-24"
+          className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
         />
       </div>
 
       {/* Key Differentiators */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Key Differentiators
         </Label>
         <Textarea
           value={formData.keyDifferentiators}
           onChange={(e) => updateFormData({ keyDifferentiators: e.target.value })}
           placeholder="What sets you apart from competitors? Unique selling points..."
-          className="min-h-24"
+          className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
         />
       </div>
 
       {/* Company Documents */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Company Information Upload (Optional)
         </Label>
         <FileUpload
@@ -86,7 +86,7 @@ const AgentKnowledge = ({ formData, updateFormData }: AgentKnowledgeProps) => {
 
       {/* Topics to Avoid */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What topics should the AI agent avoid discussing?
         </Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -101,7 +101,7 @@ const AgentKnowledge = ({ formData, updateFormData }: AgentKnowledgeProps) => {
               />
               <Label 
                 htmlFor={`avoid-${option.value}`} 
-                className="text-sm text-gray-700"
+                className="text-sm text-soft-lavender font-manrope"
               >
                 {option.label}
               </Label>
@@ -115,7 +115,7 @@ const AgentKnowledge = ({ formData, updateFormData }: AgentKnowledgeProps) => {
               value={formData.topicsToAvoidOther}
               onChange={(e) => updateFormData({ topicsToAvoidOther: e.target.value })}
               placeholder="Please specify other topics to avoid"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}

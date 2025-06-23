@@ -21,7 +21,7 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
     <div className="space-y-8">
       {/* Voice Style */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Voice Style Preference
         </Label>
         <RadioGroup
@@ -32,7 +32,7 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
           {voiceStyleOptions.map((option) => (
             <div key={option.value} className="flex items-center space-x-3">
               <RadioGroupItem value={option.value} id={option.value} />
-              <Label htmlFor={option.value} className="text-sm text-gray-700">
+              <Label htmlFor={option.value} className="text-sm text-soft-lavender font-manrope">
                 {option.label}
               </Label>
             </div>
@@ -42,35 +42,35 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
 
       {/* Main Concerns */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What are your main concerns about implementing voice AI?
         </Label>
         <Textarea
           value={formData.mainConcerns}
           onChange={(e) => updateFormData({ mainConcerns: e.target.value })}
           placeholder="Share any concerns about caller acceptance, technical integration, cost, or other factors..."
-          className="min-h-24"
+          className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
         />
       </div>
 
       {/* Success Story Example */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Describe your ideal success story
         </Label>
         <Textarea
           value={formData.successStoryExample}
           onChange={(e) => updateFormData({ successStoryExample: e.target.value })}
           placeholder="Paint a picture of what success looks like 6 months after implementing your voice AI agent..."
-          className="min-h-32"
+          className="min-h-32 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={6}
         />
       </div>
 
       {/* Additional Documents */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Additional Documentation (Optional)
         </Label>
         <FileUpload
@@ -82,9 +82,9 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
         />
       </div>
 
-      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-        <h4 className="font-medium text-green-900 mb-2">🎉 Almost Done!</h4>
-        <p className="text-sm text-green-800">
+      <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-cyber-yellow neon-glow">
+        <h4 className="font-audiowide text-cyber-yellow mb-2">🎉 Almost Done!</h4>
+        <p className="text-sm text-soft-lavender font-manrope">
           You've completed the Voice AI Discovery Form. Review your responses and click "Submit Form" 
           to send us your requirements. We'll be in touch within 24 hours to discuss next steps.
         </p>

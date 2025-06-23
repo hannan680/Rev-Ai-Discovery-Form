@@ -31,7 +31,7 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
     <div className="space-y-8">
       {/* Transfer Triggers */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           When should the AI agent transfer calls to a human?
         </Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -46,7 +46,7 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
               />
               <Label 
                 htmlFor={`trigger-${option.value}`} 
-                className="text-sm text-gray-700"
+                className="text-sm text-soft-lavender font-manrope"
               >
                 {option.label}
               </Label>
@@ -60,7 +60,7 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
               value={formData.transferTriggersOther}
               onChange={(e) => updateFormData({ transferTriggersOther: e.target.value })}
               placeholder="Please specify other transfer triggers"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}
@@ -68,7 +68,7 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
 
       {/* Escalation Examples */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Upload Escalation Examples (Optional)
         </Label>
         <FileUpload
@@ -80,9 +80,9 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
         />
       </div>
 
-      <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-        <h4 className="font-medium text-red-900 mb-2">Escalation Guidelines</h4>
-        <ul className="text-sm text-red-800 space-y-1">
+      <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-hot-magenta neon-glow">
+        <h4 className="font-audiowide text-hot-magenta mb-2">⚠️ Escalation Guidelines</h4>
+        <ul className="text-sm text-soft-lavender space-y-1 font-manrope">
           <li>• Always prioritize caller safety and de-escalation</li>
           <li>• Set clear triggers that don't require complex judgment calls</li>
           <li>• Ensure smooth handoff process to human agents</li>

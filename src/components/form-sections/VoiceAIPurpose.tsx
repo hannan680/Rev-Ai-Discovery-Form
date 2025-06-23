@@ -39,7 +39,7 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
     <div className="space-y-8">
       {/* Main Purpose */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What is the main purpose of your voice AI agent? *
         </Label>
         <RadioGroup
@@ -50,7 +50,7 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
           {purposeOptions.map((option) => (
             <div key={option.value} className="flex items-center space-x-3">
               <RadioGroupItem value={option.value} id={option.value} />
-              <Label htmlFor={option.value} className="text-sm text-gray-700">
+              <Label htmlFor={option.value} className="text-sm text-soft-lavender font-manrope">
                 {option.label}
               </Label>
             </div>
@@ -63,7 +63,7 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
               value={formData.mainPurposeOther}
               onChange={(e) => updateFormData({ mainPurposeOther: e.target.value })}
               placeholder="Please specify the main purpose"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}
@@ -71,7 +71,7 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
 
       {/* Brand Personality */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What brand personality should your AI agent have? (Select all that apply)
         </Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -86,7 +86,7 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
               />
               <Label 
                 htmlFor={`personality-${option.value}`} 
-                className="text-sm text-gray-700"
+                className="text-sm text-soft-lavender font-manrope"
               >
                 {option.label}
               </Label>
@@ -100,15 +100,15 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
               value={formData.brandPersonalityOther}
               onChange={(e) => updateFormData({ brandPersonalityOther: e.target.value })}
               placeholder="Please describe your preferred personality"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}
       </div>
 
-      <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-        <h4 className="font-medium text-green-900 mb-2">Pro Tip</h4>
-        <p className="text-sm text-green-800">
+      <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-cyber-yellow neon-glow">
+        <h4 className="font-audiowide text-cyber-yellow mb-2">💡 Pro Tip</h4>
+        <p className="text-sm text-soft-lavender font-manrope">
           The more specific you are about your AI's purpose and personality, the better we can 
           customize its responses to match your brand and achieve your goals.
         </p>

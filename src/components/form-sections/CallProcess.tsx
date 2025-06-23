@@ -33,7 +33,7 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
     <div className="space-y-8">
       {/* Current Call Process */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Describe your ideal call process in 3-5 steps
         </Label>
         <Textarea
@@ -45,17 +45,17 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
 3. Gather contact information and location
 4. Qualify their timeline and budget
 5. Schedule appointment or transfer to specialist"
-          className="min-h-32"
+          className="min-h-32 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={8}
         />
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-soft-lavender font-manrope">
           {formData.currentCallProcess.length}/1000 characters
         </div>
       </div>
 
       {/* Process Documentation Upload */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           Upload Process Documentation (Optional)
         </Label>
         <FileUpload
@@ -69,7 +69,7 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
 
       {/* Required Information */}
       <div className="space-y-4">
-        <Label className="text-lg font-semibold text-gray-900">
+        <Label className="text-lg font-audiowide text-bright-white">
           What information should the AI agent collect from callers? (Select all that apply)
         </Label>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -84,7 +84,7 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
               />
               <Label 
                 htmlFor={`info-${option.value}`} 
-                className="text-sm text-gray-700"
+                className="text-sm text-soft-lavender font-manrope"
               >
                 {option.label}
               </Label>
@@ -98,15 +98,15 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
               value={formData.requiredInformationOther}
               onChange={(e) => updateFormData({ requiredInformationOther: e.target.value })}
               placeholder="Please specify other required information"
-              className="w-full max-w-md"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
           </div>
         )}
       </div>
 
-      <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-        <h4 className="font-medium text-blue-900 mb-2">Process Design Tips</h4>
-        <ul className="text-sm text-blue-800 space-y-1">
+      <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-neon-aqua neon-glow">
+        <h4 className="font-audiowide text-cyber-yellow mb-2">🔧 Process Design Tips</h4>
+        <ul className="text-sm text-soft-lavender space-y-1 font-manrope">
           <li>• Keep your process simple and logical</li>
           <li>• Prioritize the most important information first</li>
           <li>• Consider what happens if a caller refuses to provide certain details</li>
