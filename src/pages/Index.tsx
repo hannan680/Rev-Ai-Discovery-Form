@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -20,7 +19,8 @@ import VoicePreferences from '@/components/form-sections/VoicePreferences';
 export interface FormData {
   // Basic Information
   companyName: string;
-  industry: string;
+  specificBusinessType: string;
+  companyWebsite: string;
   contactName: string;
   email: string;
   phone: string;
@@ -33,7 +33,7 @@ export interface FormData {
   
   // Call Process
   currentCallProcess: string;
-  processDocuments: File[];
+  salesScripts: File[];
   requiredInformation: string[];
   requiredInformationOther: string;
   
@@ -47,7 +47,7 @@ export interface FormData {
   emotionalStatesOther: string;
   commonProblems: string[];
   commonObjections: string;
-  customerExamples: File[];
+  faqDocuments: File[];
   
   // Agent Knowledge
   companyServices: string;
@@ -65,20 +65,26 @@ export interface FormData {
   // Success Metrics
   successDefinition: string;
   targetCallLength: number;
-  integrationNeeds: string[];
-  integrationNeedsOther: string;
+  crmSystem: string;
+  crmSystemOther: string;
+  schedulingSoftware: string;
+  schedulingSoftwareOther: string;
+  emailSystem: string;
+  emailSystemOther: string;
   complianceRequirements: string;
   
   // Voice Preferences
-  voiceStyle: string;
-  mainConcerns: string;
-  successStoryExample: string;
+  voiceGender: string;
+  elevenLabsVoiceId: string;
+  additionalVoiceRequirements: string;
+  voiceSample: File[];
   additionalDocuments: File[];
 }
 
 const initialFormData: FormData = {
   companyName: '',
-  industry: '',
+  specificBusinessType: '',
+  companyWebsite: '',
   contactName: '',
   email: '',
   phone: '',
@@ -87,7 +93,7 @@ const initialFormData: FormData = {
   brandPersonality: [],
   brandPersonalityOther: '',
   currentCallProcess: '',
-  processDocuments: [],
+  salesScripts: [],
   requiredInformation: [],
   requiredInformationOther: '',
   successCriteria: '',
@@ -97,7 +103,7 @@ const initialFormData: FormData = {
   emotionalStatesOther: '',
   commonProblems: ['', '', ''],
   commonObjections: '',
-  customerExamples: [],
+  faqDocuments: [],
   companyServices: '',
   serviceAreas: '',
   keyDifferentiators: '',
@@ -109,12 +115,17 @@ const initialFormData: FormData = {
   escalationExamples: [],
   successDefinition: '',
   targetCallLength: 0,
-  integrationNeeds: [],
-  integrationNeedsOther: '',
+  crmSystem: '',
+  crmSystemOther: '',
+  schedulingSoftware: '',
+  schedulingSoftwareOther: '',
+  emailSystem: '',
+  emailSystemOther: '',
   complianceRequirements: '',
-  voiceStyle: '',
-  mainConcerns: '',
-  successStoryExample: '',
+  voiceGender: '',
+  elevenLabsVoiceId: '',
+  additionalVoiceRequirements: '',
+  voiceSample: [],
   additionalDocuments: []
 };
 
@@ -126,8 +137,8 @@ const sections = [
   { id: 'experience', title: 'Customer Experience', component: CustomerExperience },
   { id: 'knowledge', title: 'Agent Knowledge', component: AgentKnowledge },
   { id: 'escalation', title: 'Escalation Protocols', component: EscalationProtocols },
-  { id: 'metrics', title: 'Success Metrics', component: SuccessMetrics },
-  { id: 'preferences', title: 'Voice Preferences', component: VoicePreferences }
+  { id: 'metrics', title: 'Success Metrics & Integration', component: SuccessMetrics },
+  { id: 'preferences', title: 'Voice Preferences & Specifications', component: VoicePreferences }
 ];
 
 const Index = () => {
@@ -281,7 +292,7 @@ const Index = () => {
                         className={`w-full text-left p-3 rounded-lg transition-all duration-300 font-manrope border ${
                           currentSection === index
                             ? 'bg-neon-aqua text-charcoal-black border-neon-aqua font-semibold shadow-lg'
-                            : 'bg-deep-violet/60 border-purple-grape text-bright-white hover:bg-purple-grape hover:border-neon-aqua hover:text-bright-white'
+                            : 'bg-charcoal-black/60 border-purple-grape text-bright-white hover:bg-deep-violet hover:border-neon-aqua hover:text-bright-white'
                         }`}
                       >
                         <div className="flex items-center justify-between">

@@ -53,17 +53,17 @@ const CallProcess = ({ formData, updateFormData }: CallProcessProps) => {
         </div>
       </div>
 
-      {/* Process Documentation Upload */}
+      {/* Sales/Call Scripts Upload */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          Upload Process Documentation (Optional)
+          Sales/Call Scripts Upload (Optional)
         </Label>
         <FileUpload
-          files={formData.processDocuments}
-          onFilesChange={(files) => updateFormData({ processDocuments: files })}
+          files={formData.salesScripts}
+          onFilesChange={(files) => updateFormData({ salesScripts: files })}
           acceptedTypes={['.pdf', '.doc', '.docx', '.txt']}
           maxFiles={5}
-          description="Upload any existing call scripts, process documents, or training materials"
+          description="Upload any existing sales scripts, call scripts, or conversation guides for this role"
         />
       </div>
 

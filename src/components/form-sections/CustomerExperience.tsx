@@ -116,17 +116,17 @@ Response: 'That makes perfect sense! What specific concerns can I help address t
         />
       </div>
 
-      {/* Customer Examples */}
+      {/* FAQ Document Upload */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          Upload Customer Examples (Optional)
+          FAQ Document Upload (Optional)
         </Label>
         <FileUpload
-          files={formData.customerExamples}
-          onFilesChange={(files) => updateFormData({ customerExamples: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav', '.mp4']}
+          files={formData.faqDocuments}
+          onFilesChange={(files) => updateFormData({ faqDocuments: files })}
+          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.xlsx']}
           maxFiles={5}
-          description="Share call recordings, transcripts, or examples of customer interactions"
+          description="Upload your FAQ list with questions and how you currently handle them"
         />
       </div>
     </div>

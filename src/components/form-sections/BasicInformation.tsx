@@ -8,12 +8,6 @@ interface BasicInformationProps {
   updateFormData: (updates: Partial<FormData>) => void;
 }
 
-const industryOptions = [
-  'Healthcare', 'Real Estate', 'Insurance', 'Legal Services', 'Home Services',
-  'Automotive', 'Financial Services', 'Technology', 'Education', 'Retail',
-  'Manufacturing', 'Construction', 'Professional Services', 'Other'
-];
-
 const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) => {
   return (
     <div className="space-y-6">
@@ -33,23 +27,39 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="industry" className="text-lg font-audiowide text-bright-white">
-            Industry
+          <Label htmlFor="specificBusinessType" className="text-lg font-audiowide text-bright-white">
+            Specific Business Type *
           </Label>
           <Input
-            id="industry"
-            value={formData.industry}
-            onChange={(e) => updateFormData({ industry: e.target.value })}
-            placeholder="Select or type your industry"
-            list="industry-options"
+            id="specificBusinessType"
+            value={formData.specificBusinessType}
+            onChange={(e) => updateFormData({ specificBusinessType: e.target.value })}
+            placeholder="e.g., Residential Roofing, Personal Injury Law, HVAC Repair, etc."
             className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+            required
           />
-          <datalist id="industry-options">
-            {industryOptions.map(option => (
-              <option key={option} value={option} />
-            ))}
-          </datalist>
+          <p className="text-xs text-soft-lavender font-manrope">
+            Be specific - this helps us create a targeted agent vs. generic
+          </p>
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="companyWebsite" className="text-lg font-audiowide text-bright-white">
+          Company Website *
+        </Label>
+        <Input
+          id="companyWebsite"
+          type="url"
+          value={formData.companyWebsite}
+          onChange={(e) => updateFormData({ companyWebsite: e.target.value })}
+          placeholder="https://yourcompany.com"
+          className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+          required
+        />
+        <p className="text-xs text-soft-lavender font-manrope">
+          We'll scrape this for knowledge base content
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

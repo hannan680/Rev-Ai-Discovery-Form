@@ -2,6 +2,7 @@
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Input } from '@/components/ui/input';
 import { FormData } from '@/pages/Index';
 import FileUpload from '@/components/FileUpload';
 
@@ -10,7 +11,7 @@ interface VoicePreferencesProps {
   updateFormData: (updates: Partial<FormData>) => void;
 }
 
-const voiceStyleOptions = [
+const voiceGenderOptions = [
   { value: 'female', label: 'Female' },
   { value: 'male', label: 'Male' },
   { value: 'no-preference', label: 'No preference' }
@@ -19,17 +20,17 @@ const voiceStyleOptions = [
 const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) => {
   return (
     <div className="space-y-8">
-      {/* Voice Style */}
+      {/* Voice Gender */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          Voice Style Preference
+          Voice Gender
         </Label>
         <RadioGroup
-          value={formData.voiceStyle}
-          onValueChange={(value) => updateFormData({ voiceStyle: value })}
+          value={formData.voiceGender}
+          onValueChange={(value) => updateFormData({ voiceGender: value })}
           className="space-y-3"
         >
-          {voiceStyleOptions.map((option) => (
+          {voiceGenderOptions.map((option) => (
             <div key={option.value} className="flex items-center space-x-3">
               <RadioGroupItem value={option.value} id={option.value} />
               <Label htmlFor={option.value} className="text-sm text-soft-lavender font-manrope">
@@ -40,43 +41,63 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
         </RadioGroup>
       </div>
 
-      {/* Main Concerns */}
+      {/* ElevenLabs Voice ID */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          What are your main concerns about implementing voice AI?
+          ElevenLabs Voice ID (Optional)
+        </Label>
+        <Input
+          value={formData.elevenLabsVoiceId}
+          onChange={(e) => updateFormData({ elevenLabsVoiceId: e.target.value })}
+          placeholder="Enter your ElevenLabs voice ID if you have a specific voice"
+          className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+        />
+        <p className="text-sm text-soft-lavender font-manrope">
+          If you have a custom ElevenLabs voice, paste the voice ID here
+        </p>
+      </div>
+
+      {/* Additional Voice Requirements */}
+      <div className="space-y-4">
+        <Label className="text-lg font-audiowide text-bright-white">
+          Additional Voice Requirements
         </Label>
         <Textarea
-          value={formData.mainConcerns}
-          onChange={(e) => updateFormData({ mainConcerns: e.target.value })}
-          placeholder="Share any concerns about caller acceptance, technical integration, cost, or other factors..."
+          value={formData.additionalVoiceRequirements}
+          onChange={(e) => updateFormData({ additionalVoiceRequirements: e.target.value })}
+          placeholder="Describe any specific voice characteristics, accent, pace, or other requirements..."
           className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
         />
+        <p className="text-sm text-soft-lavender font-manrope">
+          e.g., Southern accent, slower pace for elderly customers, energetic tone, etc.
+        </p>
       </div>
 
-      {/* Success Story Example */}
+      {/* Voice Sample Upload */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          Describe your ideal success story
+          Voice Sample Upload (Optional)
         </Label>
-        <Textarea
-          value={formData.successStoryExample}
-          onChange={(e) => updateFormData({ successStoryExample: e.target.value })}
-          placeholder="Paint a picture of what success looks like 6 months after implementing your voice AI agent..."
-          className="min-h-32 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
-          rows={6}
+        <FileUpload
+          files={formData.voiceSample}
+          onFilesChange={(files) => updateFormData({ voiceSample: files })}
+          acceptedTypes={['.mp3', '.wav', '.m4a']}
+          maxFiles={1}
+          maxSize={5}
+          description="Upload a voice sample if you want the AI to match a specific voice style"
         />
       </div>
 
-      {/* Additional Documents */}
+      {/* Additional Materials */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">
-          Additional Documentation (Optional)
+          Additional Materials (Optional)
         </Label>
         <FileUpload
           files={formData.additionalDocuments}
           onFilesChange={(files) => updateFormData({ additionalDocuments: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav', '.mp4']}
+          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav', '.mp4', '.xlsx']}
           maxFiles={5}
           description="Upload any other relevant materials that would help us understand your requirements"
         />

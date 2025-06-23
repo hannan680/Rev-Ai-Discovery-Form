@@ -2,7 +2,7 @@
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FormData } from '@/pages/Index';
 
 interface SuccessMetricsProps {
@@ -10,21 +10,40 @@ interface SuccessMetricsProps {
   updateFormData: (updates: Partial<FormData>) => void;
 }
 
-const integrationOptions = [
-  { value: 'crm', label: 'CRM' },
-  { value: 'scheduling', label: 'Scheduling software' },
-  { value: 'email', label: 'Email system' },
-  { value: 'other', label: 'Other' }
+const crmOptions = [
+  'None',
+  'HubSpot',
+  'Salesforce',
+  'Pipedrive',
+  'Zoho CRM',
+  'Monday.com',
+  'GoHighLevel',
+  'ActiveCampaign',
+  'Other'
+];
+
+const schedulingOptions = [
+  'None',
+  'Calendly',
+  'Acuity Scheduling',
+  'Cal.com',
+  'ScheduleOnce',
+  'TimeTrade',
+  'Appointy',
+  'Other'
+];
+
+const emailOptions = [
+  'None',
+  'Mailchimp',
+  'Constant Contact',
+  'ConvertKit',
+  'ActiveCampaign',
+  'SendGrid',
+  'Other'
 ];
 
 const SuccessMetrics = ({ formData, updateFormData }: SuccessMetricsProps) => {
-  const handleIntegrationChange = (value: string, checked: boolean) => {
-    const updatedIntegrations = checked
-      ? [...formData.integrationNeeds, value]
-      : formData.integrationNeeds.filter(integration => integration !== value);
-    updateFormData({ integrationNeeds: updatedIntegrations });
-  };
-
   return (
     <div className="space-y-8">
       {/* Success Definition */}
@@ -60,41 +79,95 @@ const SuccessMetrics = ({ formData, updateFormData }: SuccessMetricsProps) => {
         </p>
       </div>
 
-      {/* Integration Needs */}
-      <div className="space-y-4">
+      {/* Integration Systems */}
+      <div className="space-y-6">
         <Label className="text-lg font-audiowide text-bright-white">
-          What systems need to integrate with the AI agent?
+          Integration Systems
         </Label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {integrationOptions.map((option) => (
-            <div key={option.value} className="flex items-center space-x-3">
-              <Checkbox
-                id={`integration-${option.value}`}
-                checked={formData.integrationNeeds.includes(option.value)}
-                onCheckedChange={(checked) => 
-                  handleIntegrationChange(option.value, checked as boolean)
-                }
-              />
-              <Label 
-                htmlFor={`integration-${option.value}`} 
-                className="text-sm text-soft-lavender font-manrope"
-              >
-                {option.label}
-              </Label>
-            </div>
-          ))}
-        </div>
         
-        {formData.integrationNeeds.includes('other') && (
-          <div className="mt-3">
+        {/* CRM System */}
+        <div className="space-y-3">
+          <Label className="text-sm font-audiowide text-neon-aqua">
+            CRM System
+          </Label>
+          <Select value={formData.crmSystem} onValueChange={(value) => updateFormData({ crmSystem: value })}>
+            <SelectTrigger className="w-full bg-deep-violet border-purple-grape text-bright-white font-manrope focus:border-neon-aqua focus:ring-neon-aqua">
+              <SelectValue placeholder="Select CRM system" />
+            </SelectTrigger>
+            <SelectContent className="bg-charcoal-black border-purple-grape">
+              {crmOptions.map((option) => (
+                <SelectItem key={option} value={option} className="text-bright-white hover:bg-deep-violet focus:bg-deep-violet">
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          
+          {formData.crmSystem === 'Other' && (
             <Input
-              value={formData.integrationNeedsOther}
-              onChange={(e) => updateFormData({ integrationNeedsOther: e.target.value })}
-              placeholder="Please specify other integration needs"
+              value={formData.crmSystemOther}
+              onChange={(e) => updateFormData({ crmSystemOther: e.target.value })}
+              placeholder="Please specify CRM system"
               className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             />
-          </div>
-        )}
+          )}
+        </div>
+
+        {/* Scheduling Software */}
+        <div className="space-y-3">
+          <Label className="text-sm font-audiowide text-neon-aqua">
+            Scheduling Software
+          </Label>
+          <Select value={formData.schedulingSoftware} onValueChange={(value) => updateFormData({ schedulingSoftware: value })}>
+            <SelectTrigger className="w-full bg-deep-violet border-purple-grape text-bright-white font-manrope focus:border-neon-aqua focus:ring-neon-aqua">
+              <SelectValue placeholder="Select scheduling software" />
+            </SelectTrigger>
+            <SelectContent className="bg-charcoal-black border-purple-grape">
+              {schedulingOptions.map((option) => (
+                <SelectItem key={option} value={option} className="text-bright-white hover:bg-deep-violet focus:bg-deep-violet">
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          
+          {formData.schedulingSoftware === 'Other' && (
+            <Input
+              value={formData.schedulingSoftwareOther}
+              onChange={(e) => updateFormData({ schedulingSoftwareOther: e.target.value })}
+              placeholder="Please specify scheduling software"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+            />
+          )}
+        </div>
+
+        {/* Email System */}
+        <div className="space-y-3">
+          <Label className="text-sm font-audiowide text-neon-aqua">
+            Email System
+          </Label>
+          <Select value={formData.emailSystem} onValueChange={(value) => updateFormData({ emailSystem: value })}>
+            <SelectTrigger className="w-full bg-deep-violet border-purple-grape text-bright-white font-manrope focus:border-neon-aqua focus:ring-neon-aqua">
+              <SelectValue placeholder="Select email system" />
+            </SelectTrigger>
+            <SelectContent className="bg-charcoal-black border-purple-grape">
+              {emailOptions.map((option) => (
+                <SelectItem key={option} value={option} className="text-bright-white hover:bg-deep-violet focus:bg-deep-violet">
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          
+          {formData.emailSystem === 'Other' && (
+            <Input
+              value={formData.emailSystemOther}
+              onChange={(e) => updateFormData({ emailSystemOther: e.target.value })}
+              placeholder="Please specify email system"
+              className="w-full max-w-md bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+            />
+          )}
+        </div>
       </div>
 
       {/* Compliance Requirements */}
