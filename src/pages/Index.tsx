@@ -241,7 +241,7 @@ const Index = () => {
               variant="outline" 
               size="sm" 
               onClick={saveProgress}
-              className="border-neon-aqua text-neon-aqua hover:bg-neon-aqua hover:text-charcoal-black font-manrope font-medium transition-all duration-300"
+              className="bg-charcoal-black border-2 border-neon-aqua text-neon-aqua hover:bg-neon-aqua hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg"
             >
               <Save className="w-4 h-4 mr-2" />
               Save Progress
@@ -250,7 +250,7 @@ const Index = () => {
               variant="outline" 
               size="sm" 
               onClick={exportToPDF}
-              className="border-hot-magenta text-hot-magenta hover:bg-hot-magenta hover:text-bright-white font-manrope font-medium transition-all duration-300"
+              className="bg-charcoal-black border-2 border-hot-magenta text-hot-magenta hover:bg-hot-magenta hover:text-bright-white font-manrope font-medium transition-all duration-300 shadow-lg"
             >
               <Download className="w-4 h-4 mr-2" />
               Export PDF
@@ -259,7 +259,7 @@ const Index = () => {
               variant="outline" 
               size="sm" 
               onClick={emailForm}
-              className="border-cyber-yellow text-cyber-yellow hover:bg-cyber-yellow hover:text-charcoal-black font-manrope font-medium transition-all duration-300"
+              className="bg-charcoal-black border-2 border-cyber-yellow text-cyber-yellow hover:bg-cyber-yellow hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg"
             >
               <Mail className="w-4 h-4 mr-2" />
               Email Form
@@ -270,7 +270,7 @@ const Index = () => {
         <div className="flex gap-8 max-w-7xl mx-auto">
           {/* Section Navigation */}
           <div className="w-80 flex-shrink-0">
-            <Card className="p-6 sticky top-4 bg-card border-purple-grape cyber-border">
+            <Card className="p-6 sticky top-4 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
               <h3 className="font-audiowide text-neon-aqua mb-4 neon-text">Form Sections</h3>
               <ScrollArea className="h-96">
                 <div className="space-y-2">
@@ -278,10 +278,10 @@ const Index = () => {
                     <div key={section.id}>
                       <button
                         onClick={() => setCurrentSection(index)}
-                        className={`w-full text-left p-3 rounded-lg transition-all duration-300 font-manrope ${
+                        className={`w-full text-left p-3 rounded-lg transition-all duration-300 font-manrope border ${
                           currentSection === index
-                            ? 'bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black neon-glow font-semibold'
-                            : 'hover:bg-deep-violet text-soft-lavender hover:text-bright-white'
+                            ? 'bg-neon-aqua text-charcoal-black border-neon-aqua font-semibold shadow-lg'
+                            : 'bg-deep-violet/60 border-purple-grape text-bright-white hover:bg-purple-grape hover:border-neon-aqua hover:text-bright-white'
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -303,7 +303,7 @@ const Index = () => {
 
           {/* Main Form Content */}
           <div className="flex-1">
-            <Card className="p-8 bg-card border-purple-grape cyber-border">
+            <Card className="p-8 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
               <div className="mb-6">
                 <h2 className="text-2xl font-audiowide text-neon-aqua mb-2 neon-text">
                   {sections[currentSection].title}
@@ -324,7 +324,7 @@ const Index = () => {
                   variant="outline"
                   onClick={() => setCurrentSection(Math.max(0, currentSection - 1))}
                   disabled={currentSection === 0}
-                  className="border-soft-lavender text-soft-lavender hover:bg-soft-lavender hover:text-charcoal-black font-manrope font-medium transition-all duration-300"
+                  className="bg-deep-violet border-2 border-soft-lavender text-soft-lavender hover:bg-soft-lavender hover:text-charcoal-black font-manrope font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous Section
                 </Button>
@@ -332,7 +332,7 @@ const Index = () => {
                 {currentSection < sections.length - 1 ? (
                   <Button
                     onClick={() => setCurrentSection(currentSection + 1)}
-                    className="bg-neon-aqua text-charcoal-black hover:bg-hot-magenta hover:text-bright-white font-audiowide font-medium neon-glow transition-all duration-300"
+                    className="bg-neon-aqua text-charcoal-black hover:bg-hot-magenta hover:text-bright-white font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
                     Next Section
                     <ChevronRight className="w-4 h-4 ml-2" />
@@ -343,7 +343,7 @@ const Index = () => {
                       title: "Form Submitted",
                       description: "Thank you for completing the Voice AI Discovery Form!",
                     })}
-                    className="bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium magenta-pulse transition-all duration-300"
+                    className="bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
                     Submit Form
                   </Button>
