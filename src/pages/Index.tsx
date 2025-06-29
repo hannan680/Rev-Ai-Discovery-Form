@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -213,32 +214,33 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-black via-deep-violet to-purple-grape">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 md:py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          {/* Brand Logo/Title */}
-          <div className="mb-6">
-            <h1 className="text-5xl font-audiowide text-neon-aqua neon-text mb-2">
-              <span className="brand-script text-neon-aqua">RevSquared</span>
-              <span className="text-hot-magenta ml-2">AI</span>
-            </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-4"></div>
+        <div className="text-center mb-6 md:mb-8">
+          {/* Brand Logo */}
+          <div className="mb-4 md:mb-6">
+            <img 
+              src="/lovable-uploads/3d85aff1-ae7d-4df7-995c-1cc2cf65284e.png" 
+              alt="RevSquared AI Logo" 
+              className="mx-auto w-24 h-24 md:w-32 md:h-32 mb-4"
+            />
+            <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-3 md:mb-4"></div>
           </div>
           
-          <h2 className="text-4xl font-audiowide text-bright-white mb-2">
+          <h2 className="text-2xl md:text-4xl font-audiowide text-bright-white mb-2">
             Voice AI Discovery Form
           </h2>
-          <p className="text-xl text-soft-lavender mb-6 font-manrope">
+          <p className="text-base md:text-xl text-soft-lavender mb-4 md:mb-6 font-manrope px-4">
             Help us build your custom voice AI agent
           </p>
           
           {/* Progress Bar */}
-          <div className="max-w-2xl mx-auto mb-4">
-            <div className="flex justify-between text-sm text-soft-lavender mb-2 font-manrope">
+          <div className="max-w-2xl mx-auto mb-4 px-4">
+            <div className="flex justify-between text-xs md:text-sm text-soft-lavender mb-2 font-manrope">
               <span>Progress: {progress}% complete</span>
               <span>{currentSection + 1} of {sections.length} sections</span>
             </div>
-            <div className="w-full bg-deep-violet rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-deep-violet rounded-full h-2 md:h-3 overflow-hidden">
               <div 
                 className="h-full retro-gradient transition-all duration-500 ease-out neon-glow"
                 style={{ width: `${progress}%` }}
@@ -247,59 +249,59 @@ const Index = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center gap-2 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-8 px-4">
             <Button 
               variant="outline" 
               size="sm" 
               onClick={saveProgress}
-              className="bg-charcoal-black border-2 border-neon-aqua text-neon-aqua hover:bg-neon-aqua hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg"
+              className="bg-charcoal-black border-2 border-neon-aqua text-neon-aqua hover:bg-neon-aqua hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg text-xs md:text-sm"
             >
-              <Save className="w-4 h-4 mr-2" />
+              <Save className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
               Save Progress
             </Button>
             <Button 
               variant="outline" 
               size="sm" 
               onClick={exportToPDF}
-              className="bg-charcoal-black border-2 border-hot-magenta text-hot-magenta hover:bg-hot-magenta hover:text-bright-white font-manrope font-medium transition-all duration-300 shadow-lg"
+              className="bg-charcoal-black border-2 border-hot-magenta text-hot-magenta hover:bg-hot-magenta hover:text-bright-white font-manrope font-medium transition-all duration-300 shadow-lg text-xs md:text-sm"
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
               Export PDF
             </Button>
             <Button 
               variant="outline" 
               size="sm" 
               onClick={emailForm}
-              className="bg-charcoal-black border-2 border-cyber-yellow text-cyber-yellow hover:bg-cyber-yellow hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg"
+              className="bg-charcoal-black border-2 border-cyber-yellow text-cyber-yellow hover:bg-cyber-yellow hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg text-xs md:text-sm"
             >
-              <Mail className="w-4 h-4 mr-2" />
+              <Mail className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
               Email Form
             </Button>
           </div>
         </div>
 
-        <div className="flex gap-8 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-8 max-w-7xl mx-auto">
           {/* Section Navigation */}
-          <div className="w-80 flex-shrink-0">
-            <Card className="p-6 sticky top-4 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
-              <h3 className="font-audiowide text-neon-aqua mb-4 neon-text">Form Sections</h3>
-              <ScrollArea className="h-96">
+          <div className="w-full lg:w-80 flex-shrink-0 order-2 lg:order-1">
+            <Card className="p-4 md:p-6 lg:sticky lg:top-4 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
+              <h3 className="font-audiowide text-neon-aqua mb-4 neon-text text-sm md:text-base">Form Sections</h3>
+              <ScrollArea className="h-64 lg:h-96">
                 <div className="space-y-2">
                   {sections.map((section, index) => (
                     <div key={section.id}>
                       <button
                         onClick={() => setCurrentSection(index)}
-                        className={`w-full text-left p-3 rounded-lg transition-all duration-300 font-manrope border ${
+                        className={`w-full text-left p-2 md:p-3 rounded-lg transition-all duration-300 font-manrope border text-xs md:text-sm ${
                           currentSection === index
                             ? 'bg-neon-aqua text-charcoal-black border-neon-aqua font-semibold shadow-lg'
                             : 'bg-charcoal-black/60 border-purple-grape text-bright-white hover:bg-deep-violet hover:border-neon-aqua hover:text-bright-white'
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium">{section.title}</span>
+                          <span className="font-medium">{section.title}</span>
                           {completedSections.has(index) && (
-                            <div className="w-5 h-5 bg-cyber-yellow rounded-full flex items-center justify-center">
-                              <ChevronRight className="w-3 h-3 text-charcoal-black" />
+                            <div className="w-4 h-4 md:w-5 md:h-5 bg-cyber-yellow rounded-full flex items-center justify-center">
+                              <ChevronRight className="w-2 h-2 md:w-3 md:h-3 text-charcoal-black" />
                             </div>
                           )}
                         </div>
@@ -313,13 +315,13 @@ const Index = () => {
           </div>
 
           {/* Main Form Content */}
-          <div className="flex-1">
-            <Card className="p-8 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
+          <div className="flex-1 order-1 lg:order-2">
+            <Card className="p-4 md:p-8 bg-charcoal-black/80 border-2 border-purple-grape backdrop-blur-sm">
               <div className="mb-6">
-                <h2 className="text-2xl font-audiowide text-neon-aqua mb-2 neon-text">
+                <h2 className="text-xl md:text-2xl font-audiowide text-neon-aqua mb-2 neon-text">
                   {sections[currentSection].title}
                 </h2>
-                <p className="text-soft-lavender font-manrope">
+                <p className="text-soft-lavender font-manrope text-sm md:text-base">
                   Section {currentSection + 1} of {sections.length}
                 </p>
               </div>
@@ -330,12 +332,12 @@ const Index = () => {
               />
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between mt-8 pt-6 border-t border-purple-grape">
+              <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6 md:mt-8 pt-4 md:pt-6 border-t border-purple-grape">
                 <Button
                   variant="outline"
                   onClick={() => setCurrentSection(Math.max(0, currentSection - 1))}
                   disabled={currentSection === 0}
-                  className="bg-deep-violet border-2 border-soft-lavender text-soft-lavender hover:bg-soft-lavender hover:text-charcoal-black font-manrope font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto bg-deep-violet border-2 border-soft-lavender text-soft-lavender hover:bg-soft-lavender hover:text-charcoal-black font-manrope font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous Section
                 </Button>
@@ -343,7 +345,7 @@ const Index = () => {
                 {currentSection < sections.length - 1 ? (
                   <Button
                     onClick={() => setCurrentSection(currentSection + 1)}
-                    className="bg-neon-aqua text-charcoal-black hover:bg-hot-magenta hover:text-bright-white font-audiowide font-medium transition-all duration-300 shadow-lg"
+                    className="w-full sm:w-auto bg-neon-aqua text-charcoal-black hover:bg-hot-magenta hover:text-bright-white font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
                     Next Section
                     <ChevronRight className="w-4 h-4 ml-2" />
@@ -354,7 +356,7 @@ const Index = () => {
                       title: "Form Submitted",
                       description: "Thank you for completing the Voice AI Discovery Form!",
                     })}
-                    className="bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg"
+                    className="w-full sm:w-auto bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
                     Submit Form
                   </Button>
