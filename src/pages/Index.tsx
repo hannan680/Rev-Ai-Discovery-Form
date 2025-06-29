@@ -220,7 +220,7 @@ const Index = () => {
           {/* Brand Logo */}
           <div className="mb-4 md:mb-6">
             <img 
-              src={`/lovable-uploads/495361bb-7abb-417b-960c-c18fb8f2f52e.png?v=${Date.now()}`}
+              src="/lovable-uploads/2a49b2d2-c9c4-4677-b30a-a089a34e4431.png"
               alt="RevSquared AI Logo" 
               className="mx-auto w-48 h-auto md:w-80 mb-4 max-w-full"
             />
