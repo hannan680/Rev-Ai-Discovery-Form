@@ -222,7 +222,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/2a49b2d2-c9c4-4677-b30a-a089a34e4431.png"
               alt="RevSquared AI Logo" 
-              className="mx-auto w-48 h-auto md:w-80 mb-4 max-w-full"
+              className="mx-auto w-32 h-auto md:w-48 mb-4 max-w-full"
             />
             <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-3 md:mb-4"></div>
           </div>
