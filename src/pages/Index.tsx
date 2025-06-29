@@ -1,10 +1,11 @@
+
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { ChevronRight, Save, Download, Mail, Loader2 } from 'lucide-react';
+import { ChevronRight, Save, Download, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import BasicInformation from '@/components/form-sections/BasicInformation';
 import VoiceAIPurpose from '@/components/form-sections/VoiceAIPurpose';
@@ -15,9 +16,6 @@ import AgentKnowledge from '@/components/form-sections/AgentKnowledge';
 import EscalationProtocols from '@/components/form-sections/EscalationProtocols';
 import SuccessMetrics from '@/components/form-sections/SuccessMetrics';
 import VoicePreferences from '@/components/form-sections/VoicePreferences';
-import { supabase } from '@/integrations/supabase/client';
-
-console.log('Index.tsx is loading...');
 
 export interface FormData {
   // Basic Information
@@ -145,17 +143,10 @@ const sections = [
 ];
 
 const Index = () => {
-  console.log('Index component is rendering...');
-  
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [currentSection, setCurrentSection] = useState(0);
   const [completedSections, setCompletedSections] = useState<Set<number>>(new Set());
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissionId, setSubmissionId] = useState<string | null>(null);
   const { toast } = useToast();
-
-  console.log('Current section:', currentSection);
-  console.log('Form data loaded:', !!formData);
 
   // Load saved data on mount
   useEffect(() => {
@@ -195,81 +186,6 @@ const Index = () => {
     return Math.round((filledFields / totalFields) * 100);
   };
 
-  const validateRequiredFields = () => {
-    const required = [
-      'companyName',
-      'specificBusinessType', 
-      'companyWebsite',
-      'contactName',
-      'email'
-    ];
-    
-    const missing = required.filter(field => !formData[field as keyof FormData] || 
-      (typeof formData[field as keyof FormData] === 'string' && 
-       !(formData[field as keyof FormData] as string).trim()));
-    
-    return missing;
-  };
-
-  const submitFormToSupabase = async () => {
-    setIsSubmitting(true);
-    
-    try {
-      console.log('Submitting form data to Supabase...', formData);
-      
-      const { data, error } = await supabase.functions.invoke('save-voice-ai-form', {
-        body: formData
-      });
-
-      if (error) {
-        console.error('Supabase function error:', error);
-        throw new Error(error.message || 'Failed to save form data');
-      }
-
-      console.log('Form submitted successfully:', data);
-      setSubmissionId(data.id);
-      
-      // Clear local storage after successful submission
-      localStorage.removeItem('voiceAIFormData');
-      
-      toast({
-        title: "Form Submitted Successfully! 🎉",
-        description: `Your Voice AI Discovery Form has been saved. Submission ID: ${data.id?.slice(0, 8)}...`,
-      });
-
-      return true;
-    } catch (error: any) {
-      console.error('Form submission error:', error);
-      toast({
-        title: "Submission Error",
-        description: error.message || "Failed to submit form. Please try again.",
-        variant: "destructive",
-      });
-      return false;
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleFinalSubmission = async () => {
-    const missingFields = validateRequiredFields();
-    
-    if (missingFields.length > 0) {
-      toast({
-        title: "Required Fields Missing",
-        description: `Please fill in: ${missingFields.map(f => f.replace(/([A-Z])/g, ' $1').toLowerCase()).join(', ')}`,
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const success = await submitFormToSupabase();
-    if (success) {
-      // You can add additional logic here for N8N webhook trigger if needed
-      console.log('Form ready for N8N processing');
-    }
-  };
-
   const exportToPDF = () => {
     // This would integrate with a PDF generation library
     toast({
@@ -296,8 +212,6 @@ const Index = () => {
   const CurrentSectionComponent = sections[currentSection].component;
   const progress = calculateProgress();
 
-  console.log('About to render UI...');
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-black via-deep-violet to-purple-grape">
       <div className="container mx-auto px-4 py-4 md:py-8">
@@ -309,8 +223,6 @@ const Index = () => {
               src="/lovable-uploads/2a49b2d2-c9c4-4677-b30a-a089a34e4431.png"
               alt="RevSquared AI Logo" 
               className="mx-auto w-32 h-auto md:w-48 mb-4 max-w-full"
-              onLoad={() => console.log('Logo loaded successfully')}
-              onError={() => console.log('Logo failed to load')}
             />
             <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-3 md:mb-4"></div>
           </div>
@@ -321,16 +233,6 @@ const Index = () => {
           <p className="text-base md:text-xl text-soft-lavender mb-4 md:mb-6 font-manrope px-4">
             Help us build your custom voice AI agent
           </p>
-          
-          {submissionId && (
-            <div className="max-w-2xl mx-auto mb-4 px-4">
-              <div className="bg-gradient-to-r from-neon-aqua to-hot-magenta p-4 rounded-lg">
-                <p className="text-charcoal-black font-semibold">
-                  ✅ Form Submitted Successfully! ID: {submissionId.slice(0, 8)}...
-                </p>
-              </div>
-            </div>
-          )}
           
           {/* Progress Bar */}
           <div className="max-w-2xl mx-auto mb-4 px-4">
@@ -450,20 +352,13 @@ const Index = () => {
                   </Button>
                 ) : (
                   <Button
-                    onClick={handleFinalSubmission}
-                    disabled={isSubmitting || !!submissionId}
-                    className="w-full sm:w-auto bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={() => toast({
+                      title: "Form Submitted",
+                      description: "Thank you for completing the Voice AI Discovery Form!",
+                    })}
+                    className="w-full sm:w-auto bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Submitting...
-                      </>
-                    ) : submissionId ? (
-                      '✅ Form Submitted'
-                    ) : (
-                      'Submit Form'
-                    )}
+                    Submit Form
                   </Button>
                 )}
               </div>
@@ -474,7 +369,5 @@ const Index = () => {
     </div>
   );
 };
-
-console.log('Index component defined, about to export...');
 
 export default Index;
