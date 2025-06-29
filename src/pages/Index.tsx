@@ -220,9 +220,9 @@ const Index = () => {
           {/* Brand Logo */}
           <div className="mb-4 md:mb-6">
             <img 
-              src="/lovable-uploads/495361bb-7abb-417b-960c-c18fb8f2f52e.png" 
+              src={`/lovable-uploads/495361bb-7abb-417b-960c-c18fb8f2f52e.png?v=${Date.now()}`}
               alt="RevSquared AI Logo" 
-              className="mx-auto w-64 h-auto md:w-80 mb-4"
+              className="mx-auto w-48 h-auto md:w-80 mb-4 max-w-full"
             />
             <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-3 md:mb-4"></div>
           </div>
