@@ -17,6 +17,8 @@ import SuccessMetrics from '@/components/form-sections/SuccessMetrics';
 import VoicePreferences from '@/components/form-sections/VoicePreferences';
 import { supabase } from '@/integrations/supabase/client';
 
+console.log('Index.tsx is loading...');
+
 export interface FormData {
   // Basic Information
   companyName: string;
@@ -143,12 +145,17 @@ const sections = [
 ];
 
 const Index = () => {
+  console.log('Index component is rendering...');
+  
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [currentSection, setCurrentSection] = useState(0);
   const [completedSections, setCompletedSections] = useState<Set<number>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionId, setSubmissionId] = useState<string | null>(null);
   const { toast } = useToast();
+
+  console.log('Current section:', currentSection);
+  console.log('Form data loaded:', !!formData);
 
   // Load saved data on mount
   useEffect(() => {
@@ -289,6 +296,8 @@ const Index = () => {
   const CurrentSectionComponent = sections[currentSection].component;
   const progress = calculateProgress();
 
+  console.log('About to render UI...');
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-black via-deep-violet to-purple-grape">
       <div className="container mx-auto px-4 py-4 md:py-8">
@@ -300,6 +309,8 @@ const Index = () => {
               src="/lovable-uploads/2a49b2d2-c9c4-4677-b30a-a089a34e4431.png"
               alt="RevSquared AI Logo" 
               className="mx-auto w-32 h-auto md:w-48 mb-4 max-w-full"
+              onLoad={() => console.log('Logo loaded successfully')}
+              onError={() => console.log('Logo failed to load')}
             />
             <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-neon-aqua to-hot-magenta mx-auto mb-3 md:mb-4"></div>
           </div>
@@ -463,5 +474,7 @@ const Index = () => {
     </div>
   );
 };
+
+console.log('Index component defined, about to export...');
 
 export default Index;
