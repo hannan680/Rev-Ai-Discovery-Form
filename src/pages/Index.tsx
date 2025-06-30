@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { ChevronRight, Save, Download, Mail } from 'lucide-react';
+import { ChevronRight, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import BasicInformation from '@/components/form-sections/BasicInformation';
 import VoiceAIPurpose from '@/components/form-sections/VoiceAIPurpose';
@@ -186,21 +185,6 @@ const Index = () => {
     return Math.round((filledFields / totalFields) * 100);
   };
 
-  const exportToPDF = () => {
-    // This would integrate with a PDF generation library
-    toast({
-      title: "PDF Export",
-      description: "PDF export functionality would be implemented here",
-    });
-  };
-
-  const emailForm = () => {
-    toast({
-      title: "Email Form",
-      description: "Email functionality would be implemented here",
-    });
-  };
-
   const saveProgress = () => {
     localStorage.setItem('voiceAIFormData', JSON.stringify(formData));
     toast({
@@ -258,24 +242,6 @@ const Index = () => {
             >
               <Save className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
               Save Progress
-            </Button>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={exportToPDF}
-              className="bg-charcoal-black border-2 border-hot-magenta text-hot-magenta hover:bg-hot-magenta hover:text-bright-white font-manrope font-medium transition-all duration-300 shadow-lg text-xs md:text-sm"
-            >
-              <Download className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-              Export PDF
-            </Button>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={emailForm}
-              className="bg-charcoal-black border-2 border-cyber-yellow text-cyber-yellow hover:bg-cyber-yellow hover:text-charcoal-black font-manrope font-medium transition-all duration-300 shadow-lg text-xs md:text-sm"
-            >
-              <Mail className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-              Email Form
             </Button>
           </div>
         </div>
