@@ -4,7 +4,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { FormData } from '@/pages/Index';
-import FileUpload from '@/components/FileUpload';
 
 interface CustomerExperienceProps {
   formData: FormData;
@@ -113,20 +112,6 @@ Objection: 'I want to think about it'
 Response: 'That makes perfect sense! What specific concerns can I help address to make this decision easier?'"
           className="min-h-40 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={8}
-        />
-      </div>
-
-      {/* FAQ Document Upload */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-bright-white">
-          FAQ Document Upload (Optional)
-        </Label>
-        <FileUpload
-          files={formData.faqDocuments}
-          onFilesChange={(files) => updateFormData({ faqDocuments: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.xlsx']}
-          maxFiles={5}
-          description="Upload your FAQ list with questions and how you currently handle them"
         />
       </div>
     </div>
