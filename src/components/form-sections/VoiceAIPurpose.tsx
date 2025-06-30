@@ -1,4 +1,3 @@
-
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -9,6 +8,11 @@ interface VoiceAIPurposeProps {
   formData: FormData;
   updateFormData: (updates: Partial<FormData>) => void;
 }
+
+const agentTypeOptions = [
+  { value: 'inbound', label: 'Inbound Agent (receives calls from customers)' },
+  { value: 'outbound', label: 'Outbound Agent (makes calls to prospects/customers)' }
+];
 
 const purposeOptions = [
   { value: 'lead-qualification', label: 'Lead qualification and appointment setting' },
@@ -37,6 +41,27 @@ const VoiceAIPurpose = ({ formData, updateFormData }: VoiceAIPurposeProps) => {
 
   return (
     <div className="space-y-8">
+      {/* Agent Type */}
+      <div className="space-y-4">
+        <Label className="text-lg font-audiowide text-bright-white">
+          Is this an inbound or outbound agent? *
+        </Label>
+        <RadioGroup
+          value={formData.agentType}
+          onValueChange={(value) => updateFormData({ agentType: value })}
+          className="space-y-3"
+        >
+          {agentTypeOptions.map((option) => (
+            <div key={option.value} className="flex items-center space-x-3">
+              <RadioGroupItem value={option.value} id={option.value} />
+              <Label htmlFor={option.value} className="text-sm text-soft-lavender font-manrope">
+                {option.label}
+              </Label>
+            </div>
+          ))}
+        </RadioGroup>
+      </div>
+
       {/* Main Purpose */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">

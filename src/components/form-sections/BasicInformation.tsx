@@ -1,4 +1,3 @@
-
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormData } from '@/pages/Index';
@@ -89,22 +88,6 @@ const BasicInformation = ({ formData, updateFormData }: BasicInformationProps) =
             placeholder="Enter email address"
             className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
             required
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-2">
-          <Label htmlFor="phone" className="text-lg font-audiowide text-bright-white">
-            Phone Number
-          </Label>
-          <Input
-            id="phone"
-            type="tel"
-            value={formData.phone}
-            onChange={(e) => updateFormData({ phone: e.target.value })}
-            placeholder="Enter phone number"
-            className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           />
         </div>
       </div>

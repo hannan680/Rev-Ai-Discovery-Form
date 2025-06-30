@@ -22,9 +22,9 @@ export interface FormData {
   companyWebsite: string;
   contactName: string;
   email: string;
-  phone: string;
   
   // Voice AI Purpose
+  agentType: string;
   mainPurpose: string;
   mainPurposeOther: string;
   brandPersonality: string[];
@@ -76,7 +76,7 @@ const initialFormData: FormData = {
   companyWebsite: '',
   contactName: '',
   email: '',
-  phone: '',
+  agentType: '',
   mainPurpose: '',
   mainPurposeOther: '',
   brandPersonality: [],
