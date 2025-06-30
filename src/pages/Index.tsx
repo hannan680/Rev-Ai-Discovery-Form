@@ -12,7 +12,6 @@ import CallProcess from '@/components/form-sections/CallProcess';
 import QualificationCriteria from '@/components/form-sections/QualificationCriteria';
 import CustomerExperience from '@/components/form-sections/CustomerExperience';
 import AgentKnowledge from '@/components/form-sections/AgentKnowledge';
-import EscalationProtocols from '@/components/form-sections/EscalationProtocols';
 import SuccessMetrics from '@/components/form-sections/SuccessMetrics';
 import VoicePreferences from '@/components/form-sections/VoicePreferences';
 
@@ -40,27 +39,19 @@ export interface FormData {
   // Qualification Criteria
   successCriteria: string;
   disqualificationCriteria: string;
-  qualificationExamples: File[];
   
   // Customer Experience
   emotionalStates: string[];
   emotionalStatesOther: string;
   commonProblems: string[];
   commonObjections: string;
-  faqDocuments: File[];
   
   // Agent Knowledge
   companyServices: string;
   serviceAreas: string;
   keyDifferentiators: string;
-  companyDocuments: File[];
   topicsToAvoid: string[];
   topicsToAvoidOther: string;
-  
-  // Escalation Protocols
-  transferTriggers: string[];
-  transferTriggersOther: string;
-  escalationExamples: File[];
   
   // Success Metrics
   successDefinition: string;
@@ -77,8 +68,6 @@ export interface FormData {
   voiceGender: string;
   elevenLabsVoiceId: string;
   additionalVoiceRequirements: string;
-  voiceSample: File[];
-  additionalDocuments: File[];
 }
 
 const initialFormData: FormData = {
@@ -98,21 +87,15 @@ const initialFormData: FormData = {
   requiredInformationOther: '',
   successCriteria: '',
   disqualificationCriteria: '',
-  qualificationExamples: [],
   emotionalStates: [],
   emotionalStatesOther: '',
   commonProblems: ['', '', ''],
   commonObjections: '',
-  faqDocuments: [],
   companyServices: '',
   serviceAreas: '',
   keyDifferentiators: '',
-  companyDocuments: [],
   topicsToAvoid: [],
   topicsToAvoidOther: '',
-  transferTriggers: [],
-  transferTriggersOther: '',
-  escalationExamples: [],
   successDefinition: '',
   targetCallLength: 0,
   crmSystem: '',
@@ -124,9 +107,7 @@ const initialFormData: FormData = {
   complianceRequirements: '',
   voiceGender: '',
   elevenLabsVoiceId: '',
-  additionalVoiceRequirements: '',
-  voiceSample: [],
-  additionalDocuments: []
+  additionalVoiceRequirements: ''
 };
 
 const sections = [
@@ -136,7 +117,6 @@ const sections = [
   { id: 'qualification', title: 'Qualification Criteria', component: QualificationCriteria },
   { id: 'experience', title: 'Customer Experience', component: CustomerExperience },
   { id: 'knowledge', title: 'Agent Knowledge', component: AgentKnowledge },
-  { id: 'escalation', title: 'Escalation Protocols', component: EscalationProtocols },
   { id: 'metrics', title: 'Success Metrics & Integration', component: SuccessMetrics },
   { id: 'preferences', title: 'Voice Preferences & Specifications', component: VoicePreferences }
 ];
