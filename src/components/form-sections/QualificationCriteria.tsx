@@ -2,7 +2,6 @@
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { FormData } from '@/pages/Index';
-import FileUpload from '@/components/FileUpload';
 
 interface QualificationCriteriaProps {
   formData: FormData;
@@ -54,20 +53,6 @@ const QualificationCriteria = ({ formData, updateFormData }: QualificationCriter
         <div className="text-sm text-soft-lavender font-manrope">
           {formData.disqualificationCriteria.length}/800 characters
         </div>
-      </div>
-
-      {/* Qualification Examples */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-cyber-yellow">
-          Upload Qualification Examples (Optional)
-        </Label>
-        <FileUpload
-          files={formData.qualificationExamples}
-          onFilesChange={(files) => updateFormData({ qualificationExamples: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav']}
-          maxFiles={5}
-          description="Share examples of successful qualification conversations, scripts, or call recordings"
-        />
       </div>
 
       <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-neon-aqua neon-glow">

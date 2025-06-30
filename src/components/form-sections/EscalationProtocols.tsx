@@ -3,7 +3,6 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { FormData } from '@/pages/Index';
-import FileUpload from '@/components/FileUpload';
 
 interface EscalationProtocolsProps {
   formData: FormData;
@@ -64,20 +63,6 @@ const EscalationProtocols = ({ formData, updateFormData }: EscalationProtocolsPr
             />
           </div>
         )}
-      </div>
-
-      {/* Escalation Examples */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-bright-white">
-          Upload Escalation Examples (Optional)
-        </Label>
-        <FileUpload
-          files={formData.escalationExamples}
-          onFilesChange={(files) => updateFormData({ escalationExamples: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav']}
-          maxFiles={3}
-          description="Share examples of escalation scripts or challenging call scenarios"
-        />
       </div>
 
       <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-hot-magenta neon-glow">

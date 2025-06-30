@@ -4,7 +4,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Input } from '@/components/ui/input';
 import { FormData } from '@/pages/Index';
-import FileUpload from '@/components/FileUpload';
 
 interface VoicePreferencesProps {
   formData: FormData;
@@ -72,35 +71,6 @@ const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) =
         <p className="text-sm text-soft-lavender font-manrope">
           e.g., Southern accent, slower pace for elderly customers, energetic tone, etc.
         </p>
-      </div>
-
-      {/* Voice Sample Upload */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-bright-white">
-          Voice Sample Upload (Optional)
-        </Label>
-        <FileUpload
-          files={formData.voiceSample}
-          onFilesChange={(files) => updateFormData({ voiceSample: files })}
-          acceptedTypes={['.mp3', '.wav', '.m4a']}
-          maxFiles={1}
-          maxSize={5}
-          description="Upload a voice sample if you want the AI to match a specific voice style"
-        />
-      </div>
-
-      {/* Additional Materials */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-bright-white">
-          Additional Materials (Optional)
-        </Label>
-        <FileUpload
-          files={formData.additionalDocuments}
-          onFilesChange={(files) => updateFormData({ additionalDocuments: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt', '.mp3', '.wav', '.mp4', '.xlsx']}
-          maxFiles={5}
-          description="Upload any other relevant materials that would help us understand your requirements"
-        />
       </div>
 
       <div className="bg-gradient-to-r from-deep-violet to-purple-grape p-4 rounded-lg border border-cyber-yellow neon-glow">

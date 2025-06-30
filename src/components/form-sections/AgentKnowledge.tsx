@@ -4,7 +4,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { FormData } from '@/pages/Index';
-import FileUpload from '@/components/FileUpload';
 
 interface AgentKnowledgeProps {
   formData: FormData;
@@ -67,20 +66,6 @@ const AgentKnowledge = ({ formData, updateFormData }: AgentKnowledgeProps) => {
           placeholder="What sets you apart from competitors? Unique selling points..."
           className="min-h-24 bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
           rows={4}
-        />
-      </div>
-
-      {/* Company Documents */}
-      <div className="space-y-4">
-        <Label className="text-lg font-audiowide text-bright-white">
-          Company Information Upload (Optional)
-        </Label>
-        <FileUpload
-          files={formData.companyDocuments}
-          onFilesChange={(files) => updateFormData({ companyDocuments: files })}
-          acceptedTypes={['.pdf', '.doc', '.docx', '.txt']}
-          maxFiles={5}
-          description="Upload brochures, fact sheets, or other company information"
         />
       </div>
 
