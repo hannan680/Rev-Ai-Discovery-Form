@@ -25,6 +25,8 @@ export interface FormData {
   
   // Voice AI Purpose
   agentType: string;
+  leadSources: string[];
+  leadSourcesOther: string;
   mainPurpose: string;
   mainPurposeOther: string;
   brandPersonality: string[];
@@ -77,6 +79,8 @@ const initialFormData: FormData = {
   contactName: '',
   email: '',
   agentType: '',
+  leadSources: [],
+  leadSourcesOther: '',
   mainPurpose: '',
   mainPurposeOther: '',
   brandPersonality: [],
