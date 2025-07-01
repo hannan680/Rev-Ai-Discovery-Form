@@ -19,6 +19,22 @@ const voiceGenderOptions = [
 const VoicePreferences = ({ formData, updateFormData }: VoicePreferencesProps) => {
   return (
     <div className="space-y-8">
+      {/* AI Name */}
+      <div className="space-y-4">
+        <Label className="text-lg font-audiowide text-bright-white">
+          AI Agent Name *
+        </Label>
+        <Input
+          value={formData.aiName}
+          onChange={(e) => updateFormData({ aiName: e.target.value })}
+          placeholder="Enter a name for your AI agent (e.g., Sarah, Alex, etc.)"
+          className="w-full bg-deep-violet border-purple-grape text-bright-white placeholder:text-soft-lavender font-manrope focus:border-neon-aqua focus:ring-neon-aqua"
+        />
+        <p className="text-sm text-soft-lavender font-manrope">
+          This name will be used in conversations and helps personalize the AI agent
+        </p>
+      </div>
+
       {/* Voice Gender */}
       <div className="space-y-4">
         <Label className="text-lg font-audiowide text-bright-white">

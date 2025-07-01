@@ -67,6 +67,7 @@ export interface FormData {
   complianceRequirements: string;
   
   // Voice Preferences
+  aiName: string;
   voiceGender: string;
   elevenLabsVoiceId: string;
   additionalVoiceRequirements: string;
@@ -109,6 +110,7 @@ const initialFormData: FormData = {
   emailSystem: '',
   emailSystemOther: '',
   complianceRequirements: '',
+  aiName: '',
   voiceGender: '',
   elevenLabsVoiceId: '',
   additionalVoiceRequirements: ''
