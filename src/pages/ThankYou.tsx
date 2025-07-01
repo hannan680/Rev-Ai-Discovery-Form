@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { CheckCircle, ArrowLeft, Mail, Calendar } from 'lucide-react';
+import { CheckCircle, ArrowLeft, Mail, MessageSquare, Cog } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ThankYou = () => {
@@ -41,23 +41,23 @@ const ThankYou = () => {
                   <Mail className="w-5 h-5 text-neon-aqua mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-bright-white font-medium font-manrope">Email Confirmation</p>
-                    <p className="text-soft-lavender text-sm font-manrope">You'll receive a confirmation email within the next few minutes.</p>
+                    <p className="text-soft-lavender text-sm font-manrope">You will receive an email confirmation that this has been completed.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <Calendar className="w-5 h-5 text-neon-aqua mt-0.5 flex-shrink-0" />
+                  <MessageSquare className="w-5 h-5 text-neon-aqua mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-bright-white font-medium font-manrope">Expert Review</p>
-                    <p className="text-soft-lavender text-sm font-manrope">Our AI specialists will review your requirements and create a custom proposal.</p>
+                    <p className="text-bright-white font-medium font-manrope">Review & Follow-up</p>
+                    <p className="text-soft-lavender text-sm font-manrope">We will review your submission and drop any follow-up questions in Slack.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-neon-aqua mt-0.5 flex-shrink-0" />
+                  <Cog className="w-5 h-5 text-neon-aqua mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-bright-white font-medium font-manrope">Follow-up Call</p>
-                    <p className="text-soft-lavender text-sm font-manrope">We'll contact you within 24 hours to discuss your Voice AI solution.</p>
+                    <p className="text-bright-white font-medium font-manrope">AI Prototype Development</p>
+                    <p className="text-soft-lavender text-sm font-manrope">We will start working on your AI prototype.</p>
                   </div>
                 </div>
               </div>
