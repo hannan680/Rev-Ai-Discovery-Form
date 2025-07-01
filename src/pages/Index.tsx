@@ -6,6 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { ChevronRight, Save } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 import BasicInformation from '@/components/form-sections/BasicInformation';
 import VoiceAIPurpose from '@/components/form-sections/VoiceAIPurpose';
 import CallProcess from '@/components/form-sections/CallProcess';
@@ -132,8 +133,8 @@ const Index = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [completedSections, setCompletedSections] = useState<Set<number>>(new Set());
   const { toast } = useToast();
+  const navigate = useNavigate();
 
-  // Load saved data on mount
   useEffect(() => {
     const savedData = localStorage.getItem('voiceAIFormData');
     if (savedData) {
@@ -146,7 +147,6 @@ const Index = () => {
     }
   }, []);
 
-  // Auto-save every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       localStorage.setItem('voiceAIFormData', JSON.stringify(formData));
@@ -179,11 +179,25 @@ const Index = () => {
     });
   };
 
+  const handleSubmit = () => {
+    // Save the form data (in a real app, this would send to a server)
+    localStorage.setItem('voiceAIFormData', JSON.stringify(formData));
+    
+    toast({
+      title: "Form Submitted Successfully",
+      description: "Thank you for completing the Voice AI Discovery Form!",
+    });
+
+    // Navigate to thank you page
+    navigate('/thank-you');
+  };
+
   const CurrentSectionComponent = sections[currentSection].component;
   const progress = calculateProgress();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-charcoal-black via-deep-violet to-purple-grape">
+      
       <div className="container mx-auto px-4 py-4 md:py-8">
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
@@ -304,10 +318,7 @@ const Index = () => {
                   </Button>
                 ) : (
                   <Button
-                    onClick={() => toast({
-                      title: "Form Submitted",
-                      description: "Thank you for completing the Voice AI Discovery Form!",
-                    })}
+                    onClick={handleSubmit}
                     className="w-full sm:w-auto bg-gradient-to-r from-neon-aqua to-hot-magenta text-charcoal-black hover:from-hot-magenta hover:to-cyber-yellow font-audiowide font-medium transition-all duration-300 shadow-lg"
                   >
                     Submit Form
