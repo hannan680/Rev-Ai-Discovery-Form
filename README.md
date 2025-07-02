@@ -59,10 +59,26 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- Supabase (Database & File Storage)
 
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/260357d7-384a-4c05-9c00-d870072a384f) and click on Share -> Publish.
+
+## Supabase Integration
+
+This project now includes Supabase integration for data persistence and file storage. To set up Supabase:
+
+1. Follow the [Supabase Setup Guide](./SUPABASE_SETUP.md)
+2. Create a `.env` file with your Supabase credentials
+3. Run the database schema from `supabase-schema.sql`
+
+The integration provides:
+
+- Form data persistence in Supabase database
+- File uploads to Supabase storage
+- Auto-save functionality with cloud backup
+- Graceful fallback to localStorage if Supabase is unavailable
 
 ## Can I connect a custom domain to my Lovable project?
 
